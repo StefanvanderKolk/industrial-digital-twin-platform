@@ -7,254 +7,195 @@
 
 ## 1.1 Vision Statement
 
-The Industrial Digital Twin Platform aims to demonstrate a production-oriented, modular machine learning system capable of:
+The Industrial Digital Twin Platform is a structured engineering project exploring how industrial machine learning systems are designed, implemented, and deployed in practice.
 
-- Predicting Remaining Useful Life (RUL) of turbofan engines using multivariate time-series sensor data.
-- Detecting industrial surface defects using visual anomaly detection techniques.
-- Integrating both capabilities into a scalable, service-oriented architecture.
+The goal is not to achieve state-of-the-art model performance, but to understand and implement:
 
-The project emphasizes **systems engineering, reproducibility, and production readiness** rather than isolated model performance.
+- Predictive maintenance architectures
+- Visual anomaly detection systems
+- End-to-end ML system integration
+- Production-aware software engineering practices
+
+This project focuses on building a modular, reproducible, and well-documented system that reflects how industrial AI systems are structured in real-world environments.
 
 ---
 
-## 1.2 Strategic Objective
+## 1.2 Purpose
 
-The platform is designed to simulate a real-world industrial AI deployment by:
+This project exists to:
 
-- Building modular, maintainable components  
-- Separating data engineering, modeling, and inference layers  
-- Implementing version control for datasets and models  
-- Providing a documented, deployable API interface  
-- Demonstrating monitoring and observability principles  
+- Explore system-level design for industrial ML applications
+- Practice separation of concerns between data, models, and services
+- Implement reproducible ML pipelines
+- Understand deployment and containerization strategies
+- Document architectural trade-offs and design decisions
 
-The system should resemble an industrial AI product — not a research notebook.
+The emphasis is on engineering discipline and architectural clarity.
 
 ---
 
 # 2. Problem Context
 
-Modern industrial systems generate:
+Industrial systems generate large volumes of:
 
-- Continuous sensor streams (engines, turbines, robotics)
+- Multivariate time-series sensor data
 - High-resolution visual inspection data
 
-Two critical challenges arise:
+Two common engineering challenges are addressed:
 
 1. **Predictive Maintenance**  
-   Anticipating equipment failure before catastrophic breakdown.
+   Estimating Remaining Useful Life (RUL) from degradation signals.
 
-2. **Automated Quality Control**  
-   Detecting surface defects and anomalies in manufactured products.
+2. **Automated Visual Inspection**  
+   Detecting defects in manufactured components.
 
-This project simulates both challenges using:
+To simulate these challenges, this project uses:
 
 - NASA CMAPSS turbofan dataset (time-series degradation modeling)
 - MVTec AD dataset (visual anomaly detection)
 
+These datasets provide realistic, structured environments for studying industrial AI system design.
+
 ---
 
-# 3. Scope Definition
+# 3. Scope
 
 ## 3.1 In Scope
 
-The system will include:
-
 ### A. Data Engineering
 
-- Structured dataset ingestion  
-- Reproducible preprocessing pipelines  
-- Feature engineering  
-- Dataset versioning  
-- Train/validation/test splits  
+- Deterministic dataset ingestion modules
+- Configurable preprocessing pipelines
+- Feature engineering for time-series data
+- Image transformation and augmentation pipelines
+- Reproducible dataset splitting
 
 ---
 
-### B. Machine Learning Models
+### B. Machine Learning Modules
 
 #### Predictive Maintenance Module
 
-- Sequence modeling (LSTM / Temporal CNN)  
-- RUL regression output  
-- Performance metrics (MAE, RMSE)  
+- Sequence-based regression model (e.g., LSTM or Temporal CNN)
+- RUL prediction output
+- Evaluation using MAE and RMSE
+- Clear separation between training and inference logic
 
-#### Vision Anomaly Module
+#### Vision Anomaly Detection Module
 
-- Deep learning-based anomaly detection  
-- Image-level and pixel-level scoring  
-- AUROC evaluation  
-- Heatmap visualization  
+- Deep learning-based anomaly detection model
+- Image-level and pixel-level scoring
+- AUROC evaluation
+- Defect heatmap generation
+
+Model complexity is secondary to architectural integration.
 
 ---
 
 ### C. System Architecture
 
-- Modular Python package structure  
-- Config-driven execution  
-- Model registry  
-- Inference service layer  
-- REST API using FastAPI  
-- Dockerized deployment  
+- Layered project structure
+- Configuration-driven execution
+- Explicit separation of:
+  - Data layer
+  - Modeling layer
+  - Service layer
+- Model versioning mechanism
+- REST API using FastAPI
+- Dockerized execution environment
 
 ---
 
-### D. Observability
+### D. Observability and Reproducibility
 
-- Logging  
-- Model performance tracking  
-- Basic data drift detection  
-- Structured experiment tracking  
+- Structured logging
+- Experiment tracking
+- Version-controlled configurations
+- Basic data drift analysis
 
 ---
 
 ### E. Documentation
 
-- Architecture diagrams  
-- Design decision records  
-- Trade-off analysis  
-- API documentation  
-- Deployment instructions  
+- Architecture diagrams
+- Design decision records
+- Trade-off analysis
+- API documentation
+- Deployment instructions
+- Lessons learned
+
+Documentation is considered a core engineering deliverable.
 
 ---
 
 ## 3.2 Out of Scope
 
-To maintain focus, the following are excluded:
+To maintain architectural focus, the following are excluded:
 
-- Real-time hardware integration  
-- Embedded systems deployment  
-- Federated learning  
-- Cloud-native scaling (e.g., Kubernetes clusters)  
-- Proprietary datasets  
-- Commercial-grade UI  
+- Real-time hardware integration
+- Embedded deployment
+- Federated learning
+- Enterprise-scale distributed infrastructure
+- Production cloud scaling (e.g., Kubernetes clusters)
+- Commercial-grade user interface
 
-This project prioritizes architectural quality over enterprise-scale infrastructure.
-
----
-
-# 4. System Objectives
-
-## 4.1 Functional Objectives
-
-The system must:
-
-1. Ingest NASA CMAPSS data and produce RUL predictions.  
-2. Ingest MVTec AD images and produce anomaly scores.  
-3. Expose inference via REST API endpoints.  
-4. Return structured prediction responses.  
-5. Allow model version switching.  
+The project prioritizes clarity of system design over enterprise complexity.
 
 ---
 
-## 4.2 Non-Functional Objectives
+# 4. Architectural Principles
 
-The system must demonstrate:
+The system is designed around the following principles:
 
-- Modularity  
-- Reproducibility  
-- Clear separation of concerns  
-- Configurability  
-- Maintainability  
-- Deployment portability (Docker)  
-
----
-
-# 5. Target Users
-
-Although this is a portfolio project, the system simulates real stakeholders:
-
-- Manufacturing engineers  
-- Reliability engineers  
-- Data scientists  
-- ML engineers  
-- Systems architects  
+1. Layered architecture
+2. Clear abstraction boundaries
+3. Configuration over hardcoded values
+4. Separation of training and inference pipelines
+5. Single responsibility per module
+6. Deterministic experiment setup
+7. Explicit dependency management
 
 ---
 
-# 6. Dataset Context
-
-## 6.1 NASA Turbofan (CMAPSS)
-
-Dataset characteristics:
-
-- Multivariate time-series  
-- Simulated engine degradation  
-- Sensor measurements across operating cycles  
-- Target: Remaining Useful Life  
-
-Used to simulate predictive maintenance in aerospace systems.
-
----
-
-## 6.2 MVTec AD Dataset
-
-Dataset characteristics:
-
-- High-resolution industrial inspection images  
-- Pixel-level defect annotations  
-- Multiple product categories  
-- Realistic manufacturing defects  
-
-Used to simulate automated quality control.
-
----
-
-# 7. Architectural Principles
-
-The system will follow these principles:
-
-1. Layered architecture  
-2. Clear API boundaries  
-3. Configuration over hardcoding  
-4. Single responsibility per module  
-5. Separation of training and inference pipelines  
-6. Explicit dependency management  
-7. Deterministic experiment configuration  
-
----
-
-# 8. Success Criteria
+# 5. Success Criteria
 
 The project is considered successful if:
 
-- Both ML pipelines train reproducibly  
-- API endpoints return consistent predictions  
-- System can be containerized and deployed  
-- Documentation allows another engineer to replicate the setup  
-- Architecture diagrams match implementation  
+- Both ML pipelines train reproducibly
+- Inference can be served via a REST API
+- The system can be containerized and executed consistently
+- Documentation aligns with implementation
+- Another engineer can understand and run the project
 
-Model performance is secondary to architectural clarity.
-
----
-
-# 9. Long-Term Extension Possibilities
-
-Future work may include:
-
-- Streaming data ingestion  
-- Kafka integration  
-- Kubernetes deployment  
-- Feature store integration  
-- Advanced drift detection  
-- Multi-model orchestration  
+Model performance is secondary to architectural clarity and reproducibility.
 
 ---
 
-# 10. Summary
+# 6. Long-Term Extensions
 
-This project is not a collection of machine learning experiments.
+Potential future extensions include:
 
-It is a structured, modular simulation of an industrial AI system designed to demonstrate:
+- Streaming sensor simulation
+- Message broker integration (e.g., Kafka)
+- Kubernetes-based deployment
+- Feature store abstraction
+- Advanced drift detection
+- Multi-model orchestration
 
-- Systems thinking  
-- Software engineering maturity  
-- Machine learning integration  
-- Architecture-first development  
-- Production awareness  
+These are exploratory extensions rather than immediate objectives.
 
-The Industrial Digital Twin Platform represents a convergence of:
+---
 
-- Mechatronics knowledge  
-- Computer vision  
-- Time-series modeling  
-- Systems architecture  
-- Software engineering discipline  
+# 7. Summary
+
+The Industrial Digital Twin Platform is an engineering-focused exploration of industrial ML system design.
+
+It integrates:
+
+- Predictive maintenance modeling
+- Visual anomaly detection
+- Modular architecture
+- Deployment-aware design
+- Reproducible experimentation
+
+The project emphasizes disciplined system construction over isolated modeling experiments.
