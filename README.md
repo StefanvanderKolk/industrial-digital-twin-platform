@@ -1,2 +1,2 @@
 # industrial-digital-twin-platform
-Edge-to-cloud digital twin platform for predictive maintenance and industrial defect detection using real-world datasets.
+Reference architecture for an edge-to-cloud industrial digital twin integrating telemetry prognostics (NASA Turbofan RUL) and visual inspection (MVTec AD) with model lifecycle management.
