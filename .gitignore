@@ -1,0 +1,106 @@
+# =========================
+# OS / System Files
+# =========================
+.DS_Store
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Poetry
+poetry.lock
+
+# =========================
+# Build / Packaging
+# =========================
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# =========================
+# Logs
+# =========================
+*.log
+logs/
+artifacts/logs/
+
+# =========================
+# Testing
+# =========================
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# =========================
+# Jupyter
+# =========================
+.ipynb_checkpoints/
+
+# =========================
+# Data & Artifacts (Monolith)
+# =========================
+cloud-platform/data/raw/
+cloud-platform/data/processed/
+cloud-platform/data/manifests/
+
+cloud-platform/artifacts/
+cloud-platform/models/
+cloud-platform/checkpoints/
+
+# =========================
+# Data & Artifacts (Ingestion Agent)
+# =========================
+services/edge-ingestion-agent/data/
+services/edge-ingestion-agent/artifacts/
+
+# =========================
+# ML Artifacts (Generic)
+# =========================
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.h5
+*.pkl
+*.joblib
+
+# =========================
+# Docker
+# =========================
+*.tar
+docker-data/
+
+# =========================
+# Environment Variables
+# =========================
+.env
+.env.*
+!.env.example
+
+# =========================
+# IDEs
+# =========================
+.vscode/
+.idea/
+*.iml
+
+# =========================
+# Temporary Files
+# =========================
+*.swp
+*.swo
+*~
