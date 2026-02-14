@@ -50,3 +50,33 @@ Used to explore visual anomaly detection architectures.
 # System Architecture
 
 The project follows a layered structure:
+src/
+    data/ # Dataset ingestion and preprocessing
+    models/ # ML model definitions
+    training/ # Training pipelines
+    inference/ # Inference logic
+    api/ # FastAPI endpoints
+    monitoring/ # Logging and drift analysis
+
+    
+Key architectural principles:
+
+- Configuration-driven execution
+- Separation of training and inference logic
+- Model versioning
+- Deterministic experiment setup
+- Dockerized environment
+
+Detailed design documentation is available in `docs/`.
+
+---
+
+# Features
+
+- Time-series RUL prediction pipeline
+- Visual anomaly detection pipeline
+- Model evaluation metrics (MAE, RMSE, AUROC)
+- REST API for inference
+- Dockerized setup
+- Structured logging
+- Experiment reproducibility
